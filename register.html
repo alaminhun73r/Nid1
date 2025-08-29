@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Register</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="register">
+  <header>
+    <div class="brand">Order Services</div>
+    <div id="header-auth"></div>
+  </header>
+
+  <div class="container">
+    <h2>Create account</h2>
+    <form id="registerForm" class="order-card">
+      <label>Full name</label>
+      <input name="name" class="input" type="text" required>
+      <label>Email</label>
+      <input name="email" class="input" type="email" required>
+      <label>Password</label>
+      <input name="password" class="input" type="password" required>
+      <div style="margin-top:12px;">
+        <button class="btn primary" type="submit">Register</button>
+        <a href="login.html" style="margin-left:8px" class="btn muted">Login</a>
+      </div>
+    </form>
+  </div>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
