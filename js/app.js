@@ -176,9 +176,7 @@ async function initLogin() {
       await signInWithEmailAndPassword(auth, email, pass);
       const redirect = new URLSearchParams(location.search).get('redirect') || 'profile.html';
       location.href = redirect;
-    } catch (err) {
-      alert('Login failed: ' + err.message);
-    }
+    } catch (err) { alert('Login failed: ' + err.message); }
   };
 }
 
@@ -196,9 +194,7 @@ async function initRegister() {
       await signInWithEmailAndPassword(auth, email, pass);
       alert('Account created and logged in!');
       location.href = 'profile.html';
-    } catch (err) {
-      alert('Register failed: ' + err.message);
-    }
+    } catch (err) { alert('Register failed: ' + err.message); }
   };
 }
 
@@ -233,16 +229,17 @@ function start() {
   onAuthStateChanged(auth, async (u) => {
     currentUser = u;
     await refreshHeaderUI();
+
+    const page = document.body.dataset.page || 'index';
+
+    if (page === 'index') await initIndex();
+    else if (page === 'service') await initService();
+    else if (page === 'login') await initLogin();
+    else if (page === 'register') await initRegister();
+    else if (page === 'profile') await initProfile();
+    else if (page === 'recharge') await initRecharge();
+    else if (page === 'admin') await initAdmin();
   });
-
-  const page = document.body.dataset.page || 'index';
-
-  if (page === 'index') initIndex();
-  else if (page === 'service') initService();
-  else if (page === 'login') initLogin();
-  else if (page === 'register') initRegister();
-  else if (page === 'profile') initProfile();
-  // ... (keep initRecharge and initAdmin unchanged)
 }
 
 start();
